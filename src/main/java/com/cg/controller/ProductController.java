@@ -22,10 +22,7 @@ import com.cg.service.ProductServiceImpl;
 @RestController
 @RequestMapping("/api/v1")
 public class ProductController {
-	
-	// Build Success in Jenkins..
-	
-	
+
 	@Autowired
 	ProductServiceImpl service;
 
@@ -36,8 +33,6 @@ public class ProductController {
 
 	@GetMapping("/product/{id}")
 	public ResponseEntity<?> getById(@PathVariable("id") int id) {
-		System.out.println("Hello Jenkins");
-
 
 		Optional<Product> optional = service.getById(id);
 
@@ -79,7 +74,7 @@ public class ProductController {
 		Optional<Product> optional = service.getById(id);
 		if (optional.isPresent()) {
 			service.deleteProductById(id);
-			//System.out.println("Product Deleted..");
+			// System.out.println("Product Deleted..");
 		} else {
 			throw new ProductNotFoundException("Product Not Found");
 		}
