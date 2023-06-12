@@ -50,6 +50,23 @@ public class ProductController {
 	}
 
 	// Update Product...
+	@PutMapping("/product/update/{id}")
+	public ResponseEntity<?> update(@RequestBody Product product, @PathVariable("id") int id) {
+		Optional<Product> optional = service.getById(id);
+		if (optional.isPresent()) {
+
+			Product updateProduct = optional.get();
+			updateProduct.setName(product.getName());
+			updateProduct.setDescription(product.getDescription());
+			updateProduct.setPrice(product.getPrice());
+			updateProduct.setStarRating(product.getStarRating());
+			service.updateProduct(updateProduct);
+			return new ResponseEntity<Product>(updateProduct, HttpStatus.ACCEPTED);
+		} else {
+			throw new ProductNotFoundException("Product Not Found");
+
+		}
+	}
 
 	
 
