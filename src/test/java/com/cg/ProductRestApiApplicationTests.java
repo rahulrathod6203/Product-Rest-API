@@ -8,6 +8,7 @@ class ProductRestApiApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.println("Test case - 1");
 	}
 
 }
